@@ -1,9 +1,23 @@
+import { useTheme, Text, Container, Button, styled, Col, Row, Grid, Progress, Tooltip, Modal, Textarea } from '@nextui-org/react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
+  const { theme } = useTheme();
+
+  const title = "👋 Hello there!";
+  const thumbUp = "👍";
+  const thumbDown = "👎";
+
+  const [visible, setVisible] = useState(false);
+
+  const handleVote = (orientation: number) => {
+    setVisible(true);
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,60 +30,58 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <ConnectButton />
+        <div className={styles.button}>
+          <ConnectButton />
+        </div>
 
         <h1 className={styles.title}>
-          Welcome to <a href="">RainbowKit</a> + <a href="">wagmi</a> +{' '}
-          <a href="https://nextjs.org">Next.js!</a>
+          {title}
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+          There is a battle between thumbs occuring on the Rinkeby testnet. Contribute to the battle by submitting a message and thumb!
         </p>
 
-        <div className={styles.grid}>
-          <a href="https://rainbowkit.com" className={styles.card}>
-            <h2>RainbowKit Documentation &rarr;</h2>
-            <p>Learn how to customize your wallet connection flow.</p>
-          </a>
-
-          <a href="https://wagmi.sh" className={styles.card}>
-            <h2>wagmi Documentation &rarr;</h2>
-            <p>Learn how to interact with Ethereum.</p>
-          </a>
-
-          <a
-            href="https://github.com/rainbow-me/rainbowkit/tree/main/examples"
-            className={styles.card}
-          >
-            <h2>RainbowKit Examples &rarr;</h2>
-            <p>Discover boilerplate example RainbowKit projects.</p>
-          </a>
-
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Next.js Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Next.js Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div>
+          <Grid.Container gap={2} justify="center">
+            <Grid>
+              <Tooltip content={"Developers love Next.js"} rounded color="primary" placement='left'>
+                <Button size="xl" shadow css={{ fontSize: "$xl5", background: '$colors$upGradient'}} onClick={() => handleVote(1)}>{thumbUp}</Button>
+              </Tooltip>
+            </Grid>
+            <Grid>
+              <Tooltip content={"Developers love Next.js"} rounded color="primary" placement='right'>
+                <Button size="xl" shadow css={{ fontSize: "$xl5", background: '$colors$downGradient'}} onClick={() => handleVote(0)}>{thumbDown}</Button>
+              </Tooltip>
+            </Grid>
+          </Grid.Container>
         </div>
+
+        <Modal
+          closeButton
+          blur
+          aria-labelledby='modal-title'
+          open={visible}
+          onClose={() => setVisible(false)}
+        >
+          <Modal.Header>
+            <Text id="modal-title" size={18}>
+              Finalize vote
+            </Text>
+          </Modal.Header>
+          <Modal.Body>
+            <Textarea placeholder="Please enter your message to be displayed on the blockchain here." />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button auto flat color="error" onClick={() => setVisible(false)}>
+              Cancel
+            </Button>
+            <Button auto onClick={() => setVisible(false)}>
+              Submit
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      
       </main>
 
       <footer className={styles.footer}>
