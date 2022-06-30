@@ -1,4 +1,4 @@
-import { useTheme, Text, Container, Button, styled, Col, Row, Grid, Progress, Tooltip, Modal, Textarea } from '@nextui-org/react';
+import { useTheme, Text, Button, Grid, Tooltip, Modal, Textarea } from '@nextui-org/react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
