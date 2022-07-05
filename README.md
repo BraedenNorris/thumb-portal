@@ -1,34 +1,8 @@
-This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org/) project bootstrapped with [`create-rainbowkit`](https://github.com/rainbow-me/rainbowkit/tree/main/packages/create-rainbowkit).
+## Thumb Portal
+This is a small project I worked on to learn more about smart contract development on Ethereum. It is based on [this course from Buildspace.](https://buildspace.so/p/build-solidity-web3-app)
 
-## Getting Started
+I decided to modify the project by opting to use a more full featured wallet connecting method in [RainbowKit](https://www.rainbowkit.com/). Behind the scenes RainbowKit uses [wagmi](https://github.com/tmm/wagmi) a React Hooks library for Ethereum. Using Hooks for wallet operations felt more natural than the basic Metamask connector javascript.
 
-First, run the development server:
+For the styling I opted to use [NextUI](https://nextui.org/) as it is a simple and customizable React UI library.
 
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about this stack, take a look at the following resources:
-
-- [RainbowKit Documentation](https://rainbowkit.com) - Learn how to customize your wallet connection flow.
-- [wagmi Documentation](https://wagmi.sh) - Learn how to interact with Ethereum.
-- [Next.js Documentation](https://nextjs.org/docs) - Learn how to build a Next.js application.
-
-You can check out [the RainbowKit GitHub repository](https://github.com/rainbow-me/rainbowkit) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-
-Add more responsive
-Loading animation for transactions?
-figure out way to do etherscan?
+Finally, the website is deployed on Vercel which is definetly the easiest way to get a Next.js app up and running.
